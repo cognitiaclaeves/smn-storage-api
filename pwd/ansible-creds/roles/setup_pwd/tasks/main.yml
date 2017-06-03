@@ -13,6 +13,7 @@
   template:
     src: id_rsa_{{ item }}
     dest: ~/.ssh/id_rsa_{{ item }}
+    mode: 0600
   with_items:
     # Todo: Change this so that the username is a variable at the top level ...
     - cognetizen
