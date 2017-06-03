@@ -1,0 +1,6 @@
+
+Host github.com-cognetizen
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_cognetizen
+

@@ -1,6 +1,25 @@
 
 - name: Copy private ssh key (for public identity)
   template:
-    src: id_rsa
-    dest: ~/.ssh/id_rsa
+    src: id_rsa_{{ item }}
+    dest: ~/.ssh/id_rsa_{{ item }}
+  with_items:
+    - cognetizen
+
+- name: Build ssh config file
+  blockinfile:
+    path: ~/.ssh/config
+    block: |
+      #user - {{ item }}
+      Host github.com-{{ item }}
+	  HostName github.com
+	  User git
+	  IdentityFile ~/.ssh/id_rsa_{{ item }} 
+  with_items:
+    - cognetizen
+    
+#- name: Copy ssh config
+#  template:
+#    src: ssh_config
+#    dest: ~/.ssh/config
 
