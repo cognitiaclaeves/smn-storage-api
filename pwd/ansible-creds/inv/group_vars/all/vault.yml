@@ -1,5 +1,5 @@
 
-ssh_key: '{{ vault_ssh_key }}'
+ssh_key_cognetizen: '{{ vault_ssh_key_cognetizen }}'
 
 second_var: '{{ vault_second_var }}'
 

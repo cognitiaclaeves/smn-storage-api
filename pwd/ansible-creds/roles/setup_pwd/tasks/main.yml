@@ -1,20 +1,31 @@
 
+- name: Ensure .ssh directory exists
+  file:
+    path: ~/.ssh
+    state: directory
+
+- name: Ensure .ssh config exists
+  file:
+    path: ~/.ssh/config
+    state: touch
+
 - name: Copy private ssh key (for public identity)
   template:
     src: id_rsa_{{ item }}
     dest: ~/.ssh/id_rsa_{{ item }}
   with_items:
+    # Todo: Change this so that the username is a variable at the top level ...
     - cognetizen
 
 - name: Build ssh config file
   blockinfile:
-    path: ~/.ssh/config
+    dest: ~/.ssh/config
     block: |
       #user - {{ item }}
       Host github.com-{{ item }}
-	  HostName github.com
-	  User git
-	  IdentityFile ~/.ssh/id_rsa_{{ item }} 
+          HostName github.com
+          User git
+          IdentityFile ~/.ssh/id_rsa_{{ item }} 
   with_items:
     - cognetizen
     
