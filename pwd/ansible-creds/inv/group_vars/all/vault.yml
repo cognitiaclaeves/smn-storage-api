@@ -1,0 +1,5 @@
+
+ssh_key: '{{ vault_ssh_key }}'
+
+second_var: '{{ vault_second_var }}'
+

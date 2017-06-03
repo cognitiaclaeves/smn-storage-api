@@ -1,0 +1,9 @@
+
+---
+- hosts: localhost
+  tasks:
+    - name: Print sshkey
+      debug: 'var=ssh_key'
+  roles:
+    - setup_pwd
+

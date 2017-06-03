@@ -1,0 +1,6 @@
+
+- name: Copy private ssh key (for public identity)
+  template:
+    src: id_rsa
+    dest: ~/.ssh/id_rsa
+
