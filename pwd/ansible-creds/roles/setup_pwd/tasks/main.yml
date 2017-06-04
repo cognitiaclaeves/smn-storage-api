@@ -48,7 +48,7 @@
     - cognetizen
 
 - name: Clone ssh version of git repo
-  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git
+  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
 
 - name: rm https repo
   command: rm -rf ~/{{ repo }}-https
