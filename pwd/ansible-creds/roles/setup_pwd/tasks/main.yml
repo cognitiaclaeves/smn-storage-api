@@ -47,11 +47,14 @@
   with_items:
     - cognetizen
 
-- name: mv https repo
-  command: mv ~/{{ repo }} ~/{{ repo }}-https
-
 - name: Clone ssh version of git repo
-  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
+  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}-git
+
+- name: rm https repo
+  command: rm ~/{{ repo }}
+
+- name: mv git repo
+  command: mv ~/{{ repo }}-git ~/{{ repo }}
 
 
 #- name: Copy ssh config
