@@ -52,6 +52,8 @@
 
 - name: rm https repo
   command: rm ~/{{ repo }}
+  failed_when: no
+  # Ripping current directory out from underneath ansible
 
 - name: mv git repo
   command: mv ~/{{ repo }}-git ~/{{ repo }}
