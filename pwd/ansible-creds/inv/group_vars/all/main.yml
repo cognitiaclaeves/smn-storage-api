@@ -1,3 +1,4 @@
 
 repo: smn-storage-api
+vault_path: pwd/ansible-creds/ignore/vault-secret
 

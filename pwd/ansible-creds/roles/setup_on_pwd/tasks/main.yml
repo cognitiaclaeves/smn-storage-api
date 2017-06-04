@@ -48,6 +48,9 @@
 - name: Clone ssh version of git repo
   command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
 
+- name: Copy secret
+  command: mv ~/{{ repo }}-https/{{ vault_path }} ~/{{ repo }}/{{ vault_path }}
+
 - name: rm https repo
   command: rm -rf ~/{{ repo }}-https
   # failed_when: no - Still fails when it errors
