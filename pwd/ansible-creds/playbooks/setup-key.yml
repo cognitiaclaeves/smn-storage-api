@@ -1,8 +1,0 @@
-
-# sets up SSH key for a user as root on play-with-docker
----
-- hosts: localhost
-  roles:
-    - setup_on_pwd
-    # Can't add anything after, this role suicides
-
