@@ -1,9 +1,7 @@
 
 ---
 - hosts: localhost
-  tasks:
-    - name: Print sshkey
-      debug: 'var=ssh_key'
   roles:
     - setup_pwd
+    # Can't add anything after, this role suicides
 
