@@ -1,4 +1,4 @@
 
-rm -rf ~/https-pull
+rm -rfv ~/smn-*
 rm -rf ~/.ssh
 
