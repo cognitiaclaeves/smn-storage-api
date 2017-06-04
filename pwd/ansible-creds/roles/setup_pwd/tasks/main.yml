@@ -4,7 +4,7 @@
      git config --global user.email '{{ item }}@gmail.com'
      git config --global user.name '{{ item }}'
   with_items:
-    # --extra-vars=user: cognetizen
+    # run playbook with -e user=cognetizen
     - '{{ user }}'
 
 - name: Ensure .ssh directory exists
@@ -23,8 +23,7 @@
     dest: ~/.ssh/id_rsa_{{ item }}
     mode: 0600
   with_items:
-    # Todo: Change this so that the username is a variable at the top level ...
-    - cognetizen
+    - '{{ user }}'
 
 - name: Link ssh key to id_rsa (not sure why this needs to be done.)
   file:
@@ -32,8 +31,7 @@
     src: ~/.ssh/id_rsa_{{ item }}
     state: link
   with_items:
-    # Todo: Change this so that the username is a variable at the top level ...
-    - cognetizen
+    - '{{ user }}'
 
 - name: Build ssh config file
   blockinfile:
@@ -45,24 +43,15 @@
           User git
           IdentityFile ~/.ssh/id_rsa_{{ item }} 
   with_items:
-    - cognetizen
+    - '{{ user }}'
 
 - name: Clone ssh version of git repo
   command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
 
 - name: rm https repo
   command: rm -rf ~/{{ repo }}-https
-#  # failed_when: no
+  # failed_when: no - Still fails when it errors
   ignore_errors: yes
   # Ripping current directory out from underneath ansible
-
-#- name: 
-#  debug:
-#    msg: cd ; mv ~/{{ repo }}-git ~/{{ repo }}
-
-
-#- name: Copy ssh config
-#  template:
-#    src: ssh_config
-#    dest: ~/.ssh/config
+  # After this happens, the ansible cannot continue
 
