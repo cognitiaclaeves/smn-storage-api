@@ -1,4 +1,10 @@
 
+- name: Set git configs
+  cmd: "git config --global user.email '{{ item }}@gmail.com' && git config --global user.name '{{ item }}"
+  with_items:
+    # --extra-vars=user: cognetizen
+    - '{{ user }}'
+
 - name: Ensure .ssh directory exists
   file:
     path: ~/.ssh
@@ -38,7 +44,15 @@
           IdentityFile ~/.ssh/id_rsa_{{ item }} 
   with_items:
     - cognetizen
-    
+
+- name: Remove https repo ... 
+  file:
+    path: ~/{{ repo }}
+    state: absent
+
+- name: Clone ssh version of git repo
+  cmd: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
+
 #- name: Copy ssh config
 #  template:
 #    src: ssh_config
