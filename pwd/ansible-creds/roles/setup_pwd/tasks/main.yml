@@ -48,16 +48,17 @@
     - cognetizen
 
 - name: Clone ssh version of git repo
-  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}-git
+  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git
 
 - name: rm https repo
-  command: rm -rf ~/{{ repo }}
-  # failed_when: no
+  command: rm -rf ~/{{ repo }}-https
+#  # failed_when: no
   ignore_errors: yes
   # Ripping current directory out from underneath ansible
 
-- name: mv git repo
-  command: mv ~/{{ repo }}-git ~
+#- name: 
+#  debug:
+#    msg: cd ; mv ~/{{ repo }}-git ~/{{ repo }}
 
 
 #- name: Copy ssh config
