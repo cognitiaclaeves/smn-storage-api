@@ -1,6 +1,6 @@
 
 apk update
-apk add ansible
+apk add ansible openssh
 
 # for now .. in future, maybe add this to role?
 # git config --global user.email 'cognetizen@gmail.com'
