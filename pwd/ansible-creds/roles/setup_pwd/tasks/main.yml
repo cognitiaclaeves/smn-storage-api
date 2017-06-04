@@ -23,6 +23,9 @@
     path: ~/.ssh/id_rsa
     src: ~/.ssh/id_rsa_{{ item }}
     state: link
+  with_items:
+    # Todo: Change this so that the username is a variable at the top level ...
+    - cognetizen
 
 - name: Build ssh config file
   blockinfile:
