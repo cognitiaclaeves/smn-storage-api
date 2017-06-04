@@ -1,6 +1,8 @@
 
 - name: Set git configs
-  cmd: "git config --global user.email '{{ item }}@gmail.com' && git config --global user.name '{{ item }}"
+  shell: |
+     git config --global user.email '{{ item }}@gmail.com'
+     git config --global user.name '{{ item }}'
   with_items:
     # --extra-vars=user: cognetizen
     - '{{ user }}'
@@ -51,7 +53,8 @@
     state: absent
 
 - name: Clone ssh version of git repo
-  cmd: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
+  command: git clone git@github.com:cognitiaclaeves/{{ repo }}.git ~/{{ repo }}
+
 
 #- name: Copy ssh config
 #  template:
