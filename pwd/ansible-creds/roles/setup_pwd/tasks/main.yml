@@ -52,7 +52,8 @@
 
 - name: rm https repo
   command: rm -rf ~/{{ repo }}
-  failed_when: no
+  # failed_when: no
+  ignore_errors: yes
   # Ripping current directory out from underneath ansible
 
 - name: mv git repo
